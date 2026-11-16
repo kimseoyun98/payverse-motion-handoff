@@ -1,0 +1,18 @@
+/* 타일 폭 170 + 간격 8 = 178, 4개 = 712px 를 10초에 일정 속도로 (Figma: linear 10s) */
+.pv-marquee__logo {
+  background-repeat: no-repeat;
+  background-size: 380px 300px;
+  background-position: calc(var(--col) * -95px) calc(var(--row) * -60px);
+}
+
+.pv-marquee__track { animation: 10s linear infinite; }
+.pv-marquee__track--left { animation-name: pv-marquee-left; }
+.pv-marquee__track--right { animation-name: pv-marquee-right; }
+
+@keyframes pv-marquee-left { from { transform: translateX(0); } to { transform: translateX(-712px); } }
+@keyframes pv-marquee-right { from { transform: translateX(-712px); } to { transform: translateX(0); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .pv-marquee__track { animation: none; }
+  .pv-marquee__track--right { transform: translateX(-712px); }
+}

@@ -1,0 +1,64 @@
+/*
+ * Figma 키프레임 그대로 (7초 반복). 1.3초 정지 → 0.3초 이동(cubic-bezier(.35,0,.35,1))을 4번.
+ * 국기: translateY(--ty) 후 중심 기준 회전(기본 각도 --base + 회전량 --rot).
+ */
+@property --fd-rot { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
+@property --fd-ty { syntax: '<length>'; initial-value: 0px; inherits: false; }
+
+.pv-flag { --move: cubic-bezier(.35, 0, .35, 1); }
+.pv-flag__f {
+  transform: translateY(var(--fd-ty)) rotate(calc(var(--base) + var(--fd-rot)));
+  animation: fd-rot 7s linear infinite, var(--track) 7s linear infinite;
+}
+
+/* 회전량: 0 → -28° → -60° → -88° → -116° */
+@keyframes fd-rot {
+  0% { --fd-rot: 0deg; }
+  18.571% { animation-timing-function: var(--move); --fd-rot: 0deg; }
+  22.857% { --fd-rot: -0.488692rad; }
+  41.429% { animation-timing-function: var(--move); --fd-rot: -0.488692rad; }
+  45.714% { --fd-rot: -1.047198rad; }
+  64.286% { animation-timing-function: var(--move); --fd-rot: -1.047198rad; }
+  68.571% { --fd-rot: -1.53589rad; }
+  87.143% { animation-timing-function: var(--move); --fd-rot: -1.53589rad; }
+  91.429%, 100% { --fd-rot: -2.024582rad; }
+}
+
+/* 앞쪽 국기 줄: 한 칸(200 + 간격 28 = 228px)씩 4번 내려옴. 4칸 뒤 국기가 같은 각도라 반복이 끊기지 않는다. */
+@keyframes fd-front {
+  0% { --fd-ty: 0px; }
+  18.571% { animation-timing-function: var(--move); --fd-ty: 0px; }
+  22.857% { --fd-ty: 228px; }
+  41.429% { animation-timing-function: var(--move); --fd-ty: 228px; }
+  45.714% { --fd-ty: 456px; }
+  64.286% { animation-timing-function: var(--move); --fd-ty: 456px; }
+  68.571% { --fd-ty: 684px; }
+  87.143% { animation-timing-function: var(--move); --fd-ty: 684px; }
+  91.429%, 100% { --fd-ty: 912px; }
+}
+
+/* 뒤 흐린 배경 국기: 국기마다 내려오는 거리가 다르다 (Figma 값) */
+@keyframes fd-bg-a { 0% { --fd-ty: 111.352615px; } 18.571% { animation-timing-function: var(--move); --fd-ty: 111.352615px; } 22.857% { --fd-ty: 932.836731px; } 41.429% { animation-timing-function: var(--move); --fd-ty: 932.836731px; } 45.714% { --fd-ty: 1747.618896px; } 64.286% { animation-timing-function: var(--move); --fd-ty: 1747.618896px; } 68.571% { --fd-ty: 2499.547852px; } 87.143% { animation-timing-function: var(--move); --fd-ty: 2499.547852px; } 91.429%, 100% { --fd-ty: 3251.476807px; } }
+@keyframes fd-bg-b { 0% { --fd-ty: 111.352615px; } 18.571% { animation-timing-function: var(--move); --fd-ty: 111.352615px; } 22.857% { --fd-ty: 911.19989px; } 41.429% { animation-timing-function: var(--move); --fd-ty: 911.19989px; } 45.714% { --fd-ty: 1726.869507px; } 64.286% { animation-timing-function: var(--move); --fd-ty: 1726.869507px; } 68.571% { --fd-ty: 2501.786133px; } 87.143% { animation-timing-function: var(--move); --fd-ty: 2501.786133px; } 91.429%, 100% { --fd-ty: 3276.702637px; } }
+@keyframes fd-bg-c { 0% { --fd-ty: 111.352615px; } 18.571% { animation-timing-function: var(--move); --fd-ty: 111.352615px; } 22.857% { --fd-ty: 881.919434px; } 41.429% { animation-timing-function: var(--move); --fd-ty: 881.919434px; } 45.714% { --fd-ty: 1687.884888px; } 64.286% { animation-timing-function: var(--move); --fd-ty: 1687.884888px; } 68.571% { --fd-ty: 2477.333252px; } 87.143% { animation-timing-function: var(--move); --fd-ty: 2477.333252px; } 91.429%, 100% { --fd-ty: 3266.781738px; } }
+@keyframes fd-bg-d { 0% { --fd-ty: 111.352615px; } 18.571% { animation-timing-function: var(--move); --fd-ty: 111.352615px; } 22.857% { --fd-ty: 846.274109px; } 41.429% { animation-timing-function: var(--move); --fd-ty: 846.274109px; } 45.714% { --fd-ty: 1632.37085px; } 64.286% { animation-timing-function: var(--move); --fd-ty: 1632.37085px; } 68.571% { --fd-ty: 2427.257813px; } 87.143% { animation-timing-function: var(--move); --fd-ty: 2427.257813px; } 91.429%, 100% { --fd-ty: 3222.144775px; } }
+@keyframes fd-bg-e { 0% { --fd-ty: 111.352615px; } 18.571% { animation-timing-function: var(--move); --fd-ty: 111.352615px; } 22.857% { --fd-ty: 805.825256px; } 41.429% { animation-timing-function: var(--move); --fd-ty: 805.825256px; } 45.714% { --fd-ty: 1562.754272px; } 64.286% { animation-timing-function: var(--move); --fd-ty: 1562.754272px; } 68.571% { --fd-ty: 2353.750488px; } 87.143% { animation-timing-function: var(--move); --fd-ty: 2353.750488px; } 91.429%, 100% { --fd-ty: 3144.746582px; } }
+@keyframes fd-bg-f { 0% { --fd-ty: 111.352615px; } 18.571% { animation-timing-function: var(--move); --fd-ty: 111.352615px; } 22.857% { --fd-ty: 762.337219px; } 41.429% { animation-timing-function: var(--move); --fd-ty: 762.337219px; } 45.714% { --fd-ty: 1482.07605px; } 64.286% { animation-timing-function: var(--move); --fd-ty: 1482.07605px; } 68.571% { --fd-ty: 2260.025635px; } 87.143% { animation-timing-function: var(--move); --fd-ty: 2260.025635px; } 91.429%, 100% { --fd-ty: 3037.975098px; } }
+@keyframes fd-bg-g { 0% { --fd-ty: 111.352615px; } 18.571% { animation-timing-function: var(--move); --fd-ty: 111.352615px; } 22.857% { --fd-ty: 717.714294px; } 41.429% { animation-timing-function: var(--move); --fd-ty: 717.714294px; } 45.714% { --fd-ty: 1393.866089px; } 64.286% { animation-timing-function: var(--move); --fd-ty: 1393.866089px; } 68.571% { --fd-ty: 2150.175049px; } 87.143% { animation-timing-function: var(--move); --fd-ty: 2150.175049px; } 91.429%, 100% { --fd-ty: 2906.483887px; } }
+@keyframes fd-bg-h { 0% { --fd-ty: 111.352615px; } 18.571% { animation-timing-function: var(--move); --fd-ty: 111.352615px; } 22.857% { --fd-ty: 673.90155px; } 41.429% { animation-timing-function: var(--move); --fd-ty: 673.90155px; } 45.714% { --fd-ty: 1301.973755px; } 64.286% { animation-timing-function: var(--move); --fd-ty: 1301.973755px; } 68.571% { --fd-ty: 2029.002197px; } 87.143% { animation-timing-function: var(--move); --fd-ty: 2029.002197px; } 91.429%, 100% { --fd-ty: 2756.030762px; } }
+
+/* 금액 4개가 차례로 바뀜 ($ → ¥ → ¥ → ₩) */
+.pv-flag__amt { opacity: 0; animation: 7s linear infinite; }
+.pv-flag__amt[data-i='0'] { opacity: 1; animation-name: fd-amt-0; }
+.pv-flag__amt[data-i='1'] { animation-name: fd-amt-1; }
+.pv-flag__amt[data-i='2'] { animation-name: fd-amt-2; }
+.pv-flag__amt[data-i='3'] { animation-name: fd-amt-3; }
+@keyframes fd-amt-0 { 0% { opacity: 1; } 18.571% { animation-timing-function: var(--move); opacity: 1; } 22.857% { opacity: 0; } 87.143% { animation-timing-function: var(--move); opacity: 0; } 91.429%, 100% { opacity: 1; } }
+@keyframes fd-amt-1 { 0% { opacity: 0; } 18.571% { animation-timing-function: var(--move); opacity: 0; } 22.857% { opacity: 1; } 41.429% { animation-timing-function: var(--move); opacity: 1; } 45.714%, 100% { opacity: 0; } }
+@keyframes fd-amt-2 { 0% { opacity: 0; } 41.429% { animation-timing-function: var(--move); opacity: 0; } 45.714% { opacity: 1; } 64.286% { animation-timing-function: var(--move); opacity: 1; } 68.571%, 100% { opacity: 0; } }
+@keyframes fd-amt-3 { 0% { opacity: 0; } 64.286% { animation-timing-function: var(--move); opacity: 0; } 68.571% { opacity: 1; } 87.143% { animation-timing-function: var(--move); opacity: 1; } 91.429%, 100% { opacity: 0; } }
+
+/* 움직임 줄이기: 첫 장면($ 금액)에서 멈춤 */
+@media (prefers-reduced-motion: reduce) {
+  .pv-flag__f, .pv-flag__amt { animation-play-state: paused; }
+}

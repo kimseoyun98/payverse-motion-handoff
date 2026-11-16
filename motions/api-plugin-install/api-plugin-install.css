@@ -1,0 +1,36 @@
+/* Figma 키프레임 그대로 (3초 반복) */
+.pv-api2 [data-node-id] { --motion-origin-x: 50; --motion-origin-y: 50; animation-duration: 3s; animation-timing-function: linear; animation-iteration-count: infinite; }
+
+/* 퍼즐 버튼 눌림 (0.65초) */
+.pv-api2 [data-node-id="7939:25811"], .pv-api2 [data-node-id="7939:25826"] { animation-name: a2-press; }
+@keyframes a2-press { 0% { --motion-scale-x: 1; --motion-scale-y: 1; } 21.667% { animation-timing-function: ease-out; --motion-scale-x: 1; --motion-scale-y: 1; } 26.333% { animation-timing-function: cubic-bezier(.45, 1.45, .8, 1); --motion-scale-x: .92; --motion-scale-y: .92; } 32.667%, 100% { --motion-scale-x: 1; --motion-scale-y: 1; } }
+
+/* 말풍선 카드 튀어나옴 (0.83초) */
+.pv-api2 [data-node-id="7939:25839"] { animation-name: a2-card-s, a2-card-op; }
+@keyframes a2-card-s { 0% { --motion-scale-x: .65; --motion-scale-y: .65; } 27.667% { animation-timing-function: cubic-bezier(.45, 1.45, .8, 1); --motion-scale-x: .65; --motion-scale-y: .65; } 37% { animation-timing-function: ease-out; --motion-scale-x: 1.06; --motion-scale-y: 1.06; } 42.667%, 100% { --motion-scale-x: 1; --motion-scale-y: 1; } }
+@keyframes a2-card-op { 0% { opacity: 0; } 27.667% { animation-timing-function: ease-out; opacity: 0; } 34%, 100% { opacity: 1; } }
+
+/* 페이버스 심볼 튀어나옴 (1.78초) */
+.pv-api2 [data-node-id="7939:25840"] { animation-name: a2-sym-s, a2-sym-op; }
+@keyframes a2-sym-s { 0% { --motion-scale-x: .65; --motion-scale-y: .65; } 59.333% { animation-timing-function: cubic-bezier(.45, 1.45, .8, 1); --motion-scale-x: .65; --motion-scale-y: .65; } 68.667% { animation-timing-function: ease-out; --motion-scale-x: 1.06; --motion-scale-y: 1.06; } 74.333%, 100% { --motion-scale-x: 1; --motion-scale-y: 1; } }
+@keyframes a2-sym-op { 0% { opacity: 0; } 59.333% { animation-timing-function: ease-out; opacity: 0; } 65.667%, 100% { opacity: 1; } }
+
+/* "설치하기" 버튼 (Figma에 없는 추가 연출): 카드와 함께 보임 → 1.38초 눌림 → 1.6초부터 사라짐 → 1.78초 심볼 등장 */
+.pv-api2__install { animation: a2-install 3s linear infinite; }
+@keyframes a2-install {
+  0% { opacity: 1; scale: 1; }
+  52% { animation-timing-function: ease-in; opacity: 1; scale: 1; }
+  57%, 100% { opacity: 0; scale: .9; }
+}
+.pv-api2__btn { animation: a2-btn 3s linear infinite; }
+@keyframes a2-btn {
+  0% { scale: 1; background-color: rgba(19, 53, 102, 0); }
+  44% { animation-timing-function: ease-out; scale: 1; background-color: rgba(19, 53, 102, 0); }
+  46.333% { animation-timing-function: cubic-bezier(.45, 1.45, .8, 1); scale: .9; background-color: rgba(19, 53, 102, .08); }
+  51%, 100% { scale: 1; background-color: rgba(19, 53, 102, .08); }
+}
+
+/* 움직임 줄이기: 카드와 심볼이 다 나온 상태로 멈춤 */
+@media (prefers-reduced-motion: reduce) {
+  .pv-api2 [data-node-id], .pv-api2__install, .pv-api2__btn { animation-play-state: paused !important; animation-delay: -2.4s !important; }
+}

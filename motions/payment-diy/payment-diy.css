@@ -1,0 +1,36 @@
+/* Figma 키프레임 그대로 (2.4초 반복). 변환 규칙은 _shared/figma-motion.css 의 .fm */
+:root { --pv-spring: linear(0, 0.0188, 0.0679, 0.1374, 0.2195, 0.308, 0.3978, 0.4856, 0.5686, 0.6452, 0.7142, 0.7753, 0.8283, 0.8735, 0.9113, 0.9423, 0.9671, 0.9866, 1.0014, 1.0123, 1.0198, 1.0247, 1.0274, 1.0283, 1.0281, 1.0268, 1.025, 1.0227, 1.0202, 1.0177, 1.0152, 1.0128, 1.0106, 1.0085, 1.0068, 1.0052, 1.0039, 1.0028, 1.0018, 1.0011, 1.0005, 1, 0.9997, 0.9995, 0.9993, 0.9992, 0.9992, 0.9992, 0.9992, 0.9993, 0.9993); }
+
+/* 5: 빈 칸 — 카드가 들어오면 불투명해지고 살짝 커짐 */
+.pv-diy [data-node-id="7757:49798"] {
+  --motion-origin-x: 50; --motion-origin-y: 50;
+  animation: diy5-sx 2.4s linear infinite, diy5-sy 2.4s linear infinite, diy5-op 2.4s linear infinite;
+}
+@keyframes diy5-sx { 0% { --motion-scale-x: 1; } 37.5% { animation-timing-function: var(--pv-spring); --motion-scale-x: 1; } 85.776%, 100% { --motion-scale-x: 1.04; } }
+@keyframes diy5-sy { 0% { --motion-scale-y: 1; } 37.5% { animation-timing-function: var(--pv-spring); --motion-scale-y: 1; } 85.776%, 100% { --motion-scale-y: 1.04; } }
+@keyframes diy5-op { 0% { opacity: .5; } 37.5% { animation-timing-function: cubic-bezier(.5, 0, .5, 1); opacity: .5; } 38.516%, 100% { opacity: 1; } }
+
+/* 6: 원래 자리 Apple Pay — 살짝 커졌다 흐려짐 */
+.pv-diy [data-node-id="7757:49799"] {
+  --motion-origin-x: 50; --motion-origin-y: 50;
+  animation: diy6-sx 2.4s linear infinite, diy6-sy 2.4s linear infinite, diy6-op 2.4s linear infinite;
+}
+@keyframes diy6-sx { 0% { --motion-scale-x: 1; } 18.75% { animation-timing-function: cubic-bezier(.2, .8, .2, 1); --motion-scale-x: 1; } 25.833% { animation-timing-function: ease; --motion-scale-x: 1.03; } 39.583%, 100% { --motion-scale-x: 1; } }
+@keyframes diy6-sy { 0% { --motion-scale-y: 1; } 18.75% { animation-timing-function: cubic-bezier(.2, .8, .2, 1); --motion-scale-y: 1; } 25.833% { animation-timing-function: ease; --motion-scale-y: 1.03; } 39.583%, 100% { --motion-scale-y: 1; } }
+@keyframes diy6-op { 0% { opacity: 1; } 20% { animation-timing-function: ease; opacity: 1; } 37.5%, 100% { opacity: .5; } }
+
+/* 날아가는 카드 */
+.pv-diy [data-node-id="7757:49818"] {
+  --motion-origin-x: 50; --motion-origin-y: 50;
+  animation: diyM-r 2.4s linear infinite, diyM-sx 2.4s linear infinite, diyM-sy 2.4s linear infinite, diyM-tx 2.4s linear infinite, diyM-ty 2.4s linear infinite, diyM-op 2.4s linear infinite;
+}
+@keyframes diyM-r { 0% { --motion-rotate: 0; } 18.75% { animation-timing-function: cubic-bezier(.2, .8, .2, 1); --motion-rotate: 0; } 25.833% { animation-timing-function: ease; --motion-rotate: -0.034907; } 59.167%, 100% { --motion-rotate: 0; } }
+@keyframes diyM-sx { 0% { --motion-scale-x: .854545; } 18.75% { animation-timing-function: cubic-bezier(.2, .8, .2, 1); --motion-scale-x: .854545; } 25.833% { animation-timing-function: ease; --motion-scale-x: .92; } 59.167%, 100% { --motion-scale-x: 1; } }
+@keyframes diyM-sy { 0% { --motion-scale-y: .854545; } 18.75% { animation-timing-function: cubic-bezier(.2, .8, .2, 1); --motion-scale-y: .854545; } 25.833% { animation-timing-function: ease; --motion-scale-y: .92; } 59.167%, 100% { --motion-scale-y: 1; } }
+@keyframes diyM-tx { 0% { --motion-translate-x: 81; } 25.833% { animation-timing-function: ease; --motion-translate-x: 81; } 59.167%, 100% { --motion-translate-x: 0; } }
+@keyframes diyM-ty { 0% { --motion-translate-y: -20; } 18.75% { animation-timing-function: cubic-bezier(.2, .8, .2, 1); --motion-translate-y: -20; } 25.833% { animation-timing-function: ease; --motion-translate-y: -28; } 59.167%, 100% { --motion-translate-y: 0; } }
+@keyframes diyM-op { 0% { opacity: 0; } 17.5% { animation-timing-function: cubic-bezier(.2, .8, .2, 1); opacity: 0; } 21.667%, 100% { opacity: 1; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .pv-diy [data-node-id] { animation: none; }
+}

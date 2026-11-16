@@ -1,0 +1,25 @@
+/* Figma 키프레임 그대로 (3초 반복) */
+.pv-api1 { --spring-a: linear(0, 0.03, 0.1077, 0.2165, 0.342, 0.4728, 0.6001, 0.7175, 0.8208, 0.9077, 0.9776, 1.0307, 1.0684, 1.0925, 1.1051, 1.1084, 1.1047, 1.096, 1.084, 1.0703, 1.0561, 1.0424, 1.0297, 1.0187, 1.0094, 1.0019, 0.9963, 0.9923, 0.9898, 0.9885, 0.9882, 0.9887, 0.9897, 0.991, 0.9925, 0.994, 0.9955, 0.9969, 0.9981, 0.9991, 0.9998, 1.0004, 1.0009, 1.0011, 1.0012, 1.0013, 1.0012, 1.0011, 1.001, 1.0008, 1.0006); }
+.pv-api1 [data-node-id] { animation-duration: 3s; animation-timing-function: linear; animation-iteration-count: infinite; }
+
+/* 숫자 8 (0.46초), 0 (0.74초)에 나타남 */
+.pv-api1 [data-node-id="7928:26931"] { animation-name: a1-d8; }
+.pv-api1 [data-node-id="7928:26936"] { animation-name: a1-d0; }
+@keyframes a1-d8 { 0% { animation-timing-function: step-end; opacity: 0; } 15.333%, 100% { opacity: 1; } }
+@keyframes a1-d0 { 0% { animation-timing-function: step-end; opacity: 0; } 24.667%, 100% { opacity: 1; } }
+
+/* 커서: 글자가 늘 때마다 오른쪽으로 점프, 0.3초 간격 깜빡임 */
+.pv-api1 [data-node-id="7928:26954"] { animation-name: a1-cur-x, a1-cur-op; }
+@keyframes a1-cur-x { 0% { animation-timing-function: step-end; --motion-translate-x: -99.106232; } 15.333% { animation-timing-function: step-end; --motion-translate-x: -43.772949; } 24.667%, 100% { --motion-translate-x: 0; } }
+@keyframes a1-cur-op { 0%, 20%, 40%, 60%, 80% { animation-timing-function: step-end; opacity: 1; } 10%, 30%, 50%, 70%, 90% { animation-timing-function: step-end; opacity: 0; } 100% { opacity: 1; } }
+
+/* Pay 버튼 눌림 (2.1초) */
+.pv-api1 [data-node-id="7928:26973"] { --motion-origin-x: 50; --motion-origin-y: 50; animation-name: a1-btn-s, a1-btn-y, a1-btn-op; }
+@keyframes a1-btn-s { 0% { --motion-scale-x: 1; --motion-scale-y: 1; } 70% { animation-timing-function: var(--spring-a); --motion-scale-x: 1; --motion-scale-y: 1; } 74.333% { animation-timing-function: cubic-bezier(.45, 1.45, .8, 1); --motion-scale-x: .96; --motion-scale-y: .96; } 81%, 100% { --motion-scale-x: 1; --motion-scale-y: 1; } }
+@keyframes a1-btn-y { 0% { --motion-translate-y: 0; } 70% { animation-timing-function: var(--spring-a); --motion-translate-y: 0; } 74.333% { animation-timing-function: cubic-bezier(.45, 1.45, .8, 1); --motion-translate-y: 2; } 81%, 100% { --motion-translate-y: 0; } }
+@keyframes a1-btn-op { 0% { opacity: 1; } 70% { animation-timing-function: var(--spring-a); opacity: 1; } 74.333% { animation-timing-function: cubic-bezier(.45, 1.45, .8, 1); opacity: .9; } 81%, 100% { opacity: 1; } }
+
+/* 움직임 줄이기: "$ 80" 입력이 끝난 상태로 멈춤 */
+@media (prefers-reduced-motion: reduce) {
+  .pv-api1 [data-node-id] { animation-play-state: paused !important; animation-delay: -1.2s !important; }
+}

@@ -1,0 +1,31 @@
+/* Figma 키프레임: 2초, 0% → 25% 위로 100px (ease-out) → 50% 제자리 (ease-out) → 100% 정지 */
+.pv-qr__scan {
+  translate: -50% 0;
+  animation: pv-qr-scan 2s linear infinite;
+}
+
+.pv-qr__blue {
+  mask-repeat: no-repeat;
+  mask-size: 204px 205px;
+  mask-position: -14.596px 92.004px;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: 204px 205px;
+  -webkit-mask-position: -14.596px 92.004px;
+  animation: pv-qr-mask 2s linear infinite;
+}
+
+@keyframes pv-qr-scan {
+  0% { transform: translateY(0); animation-timing-function: ease-out; }
+  25% { transform: translateY(-100px); animation-timing-function: ease-out; }
+  50%, 100% { transform: translateY(0); }
+}
+
+@keyframes pv-qr-mask {
+  0% { mask-position: -14.596px 92.004px; -webkit-mask-position: -14.596px 92.004px; animation-timing-function: ease-out; }
+  25% { mask-position: -14.596px -7.996px; -webkit-mask-position: -14.596px -7.996px; animation-timing-function: ease-out; }
+  50%, 100% { mask-position: -14.596px 92.004px; -webkit-mask-position: -14.596px 92.004px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pv-qr__scan, .pv-qr__blue { animation: none; }
+}

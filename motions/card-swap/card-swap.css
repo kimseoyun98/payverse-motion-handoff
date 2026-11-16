@@ -1,0 +1,37 @@
+/* Figma 키프레임 그대로 (4초 반복). 접힘: cubic-bezier(.3,-.05,.7,-.5) / 펴짐: cubic-bezier(.45,1.45,.8,1) */
+.pv-swap { --fold: cubic-bezier(.3, -.05, .7, -.5); --unfold: cubic-bezier(.45, 1.45, .8, 1); }
+.pv-swap [data-node-id] { --motion-origin-x: 50; --motion-origin-y: 50; animation-duration: 4s; animation-timing-function: linear; animation-iteration-count: infinite; }
+
+/* 위 카드: 37.5→40% 접힘, 82.5→85% 펴짐 */
+.pv-swap [data-node-id="7835:79996"] { animation-name: sw-a-sx, sw-a-sy, sw-a-op; }
+@keyframes sw-a-sx { 0% { --motion-scale-x: 1; } 37.5% { animation-timing-function: var(--fold); --motion-scale-x: 1; } 40% { --motion-scale-x: 1.025; } 82.5% { animation-timing-function: var(--unfold); --motion-scale-x: 1.025; } 85%, 100% { --motion-scale-x: 1; } }
+@keyframes sw-a-sy { 0% { --motion-scale-y: 1; } 37.5% { animation-timing-function: var(--fold); --motion-scale-y: 1; } 40% { --motion-scale-y: 0; } 82.5% { animation-timing-function: var(--unfold); --motion-scale-y: 0; } 85%, 100% { --motion-scale-y: 1; } }
+@keyframes sw-a-op { 0%, 39.875% { opacity: 1; } 40%, 82.5% { opacity: 0; } 82.625%, 100% { opacity: 1; } }
+
+/* 아래 카드: 0.08초 늦게 (39.5→42%, 84.5→87%) */
+.pv-swap [data-node-id="7835:80040"] { animation-name: sw-b-sx, sw-b-sy, sw-b-op; }
+@keyframes sw-b-sx { 0% { --motion-scale-x: 1; } 39.5% { animation-timing-function: var(--fold); --motion-scale-x: 1; } 42% { --motion-scale-x: 1.025; } 84.5% { animation-timing-function: var(--unfold); --motion-scale-x: 1.025; } 87%, 100% { --motion-scale-x: 1; } }
+@keyframes sw-b-sy { 0% { --motion-scale-y: 1; } 39.5% { animation-timing-function: var(--fold); --motion-scale-y: 1; } 42% { --motion-scale-y: 0; } 84.5% { animation-timing-function: var(--unfold); --motion-scale-y: 0; } 87%, 100% { --motion-scale-y: 1; } }
+@keyframes sw-b-op { 0%, 41.875% { opacity: 1; } 42%, 84.5% { opacity: 0; } 84.625%, 100% { opacity: 1; } }
+
+/* 위 자리 겹침 카드 (아래 카드 내용): 40→42.5% 펴짐, 80→82.5% 접힘 */
+.pv-swap [data-node-id="7835:80087"] { animation-name: sw-c-sx, sw-c-sy, sw-c-op; }
+@keyframes sw-c-sx { 0% { --motion-scale-x: 1.025; } 40% { animation-timing-function: var(--unfold); --motion-scale-x: 1.025; } 42.5% { --motion-scale-x: 1; } 80% { animation-timing-function: var(--fold); --motion-scale-x: 1; } 82.5%, 100% { --motion-scale-x: 1.025; } }
+@keyframes sw-c-sy { 0% { --motion-scale-y: 0; } 40% { animation-timing-function: var(--unfold); --motion-scale-y: 0; } 42.5% { --motion-scale-y: 1; } 80% { animation-timing-function: var(--fold); --motion-scale-y: 1; } 82.5%, 100% { --motion-scale-y: 0; } }
+@keyframes sw-c-op { 0%, 40% { opacity: 0; } 40.125%, 82.375% { opacity: 1; } 82.5%, 100% { opacity: 0; } }
+
+/* 아래 자리 겹침 카드 (위 카드 내용): 42→44.5% 펴짐, 82→84.5% 접힘 */
+.pv-swap [data-node-id="7835:80135"] { animation-name: sw-d-sx, sw-d-sy, sw-d-op; }
+@keyframes sw-d-sx { 0% { --motion-scale-x: 1.025; } 42% { animation-timing-function: var(--unfold); --motion-scale-x: 1.025; } 44.5% { --motion-scale-x: 1; } 82% { animation-timing-function: var(--fold); --motion-scale-x: 1; } 84.5%, 100% { --motion-scale-x: 1.025; } }
+@keyframes sw-d-sy { 0% { --motion-scale-y: 0; } 42% { animation-timing-function: var(--unfold); --motion-scale-y: 0; } 44.5% { --motion-scale-y: 1; } 82% { animation-timing-function: var(--fold); --motion-scale-y: 1; } 84.5%, 100% { --motion-scale-y: 0; } }
+@keyframes sw-d-op { 0%, 42% { opacity: 0; } 42.125%, 84.375% { opacity: 1; } 84.5%, 100% { opacity: 0; } }
+
+/* 화살표 아이콘 뒤집힘 (크기 1 → 0 → -1 → 0 → 1) */
+.pv-swap [data-node-id="7835:80178"] { animation-name: sw-l-s; }
+@keyframes sw-l-s { 0% { --motion-scale-x: 1; --motion-scale-y: 1; } 39.5% { animation-timing-function: var(--fold); --motion-scale-x: 1; --motion-scale-y: 1; } 42% { animation-timing-function: var(--unfold); --motion-scale-x: 0; --motion-scale-y: 0; } 44.5% { --motion-scale-x: -1; --motion-scale-y: -1; } 82% { animation-timing-function: var(--fold); --motion-scale-x: -1; --motion-scale-y: -1; } 84.5% { animation-timing-function: var(--unfold); --motion-scale-x: 0; --motion-scale-y: 0; } 87%, 100% { --motion-scale-x: 1; --motion-scale-y: 1; } }
+.pv-swap [data-node-id="7835:80197"] { animation-name: sw-r-s; }
+@keyframes sw-r-s { 0% { --motion-scale-x: 1; --motion-scale-y: 1; } 37.5% { animation-timing-function: var(--fold); --motion-scale-x: 1; --motion-scale-y: 1; } 40% { animation-timing-function: var(--unfold); --motion-scale-x: 0; --motion-scale-y: 0; } 42.5% { --motion-scale-x: -1; --motion-scale-y: -1; } 80% { animation-timing-function: var(--fold); --motion-scale-x: -1; --motion-scale-y: -1; } 82.5% { animation-timing-function: var(--unfold); --motion-scale-x: 0; --motion-scale-y: 0; } 85%, 100% { --motion-scale-x: 1; --motion-scale-y: 1; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .pv-swap [data-node-id] { animation: none; }
+}

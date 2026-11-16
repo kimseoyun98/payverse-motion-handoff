@@ -1,0 +1,144 @@
+/*
+ * 크기 규칙: .pv-settle__card 의 font-size 를 "디자인 1px" 로 두고(= 카드 폭 / 435),
+ * 안쪽 모든 치수를 em 으로 적는다. 그래서 숫자는 Figma px 값과 같다.
+ * 안쪽 요소에는 font-size 를 em 으로 다시 바꾸지 않는다(라벨만 예외).
+ */
+.pv-settle {
+  --pv-settle-bg: var(--seed-color-bg-brand-solid, #217cf9);
+  container-type: inline-size;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+}
+
+.pv-settle__card {
+  font-size: calc(100cqw / 435);
+  position: relative;
+  width: 435em;
+  height: 435em;
+  overflow: hidden;
+  border-radius: 24em;
+  background: var(--pv-settle-bg);
+}
+
+/* Figma Container 365×278, 카드 가운데(+0.5) */
+.pv-settle__stage {
+  position: absolute;
+  left: 50%;
+  top: calc(50% + 0.5em);
+  width: 365em;
+  height: 278em;
+  transform: translate(-50%, -50%);
+}
+
+/* Figma SVG는 가운데 정렬 선(두께 4)이라 레이어 박스보다 2px씩 바깥에서 시작한다 */
+.pv-settle__arc {
+  position: absolute;
+  left: 13em;
+  top: 20.25em;
+  width: 339em;
+  height: 336em;
+}
+
+.pv-settle__arc-coin {
+  position: absolute;
+  width: 46.4925em;
+  height: 46.4925em;
+  transform: translate(-50%, -50%);
+  filter: drop-shadow(0 12.785em 6.974em rgba(51, 0, 128, 0.05));
+}
+
+.pv-settle__center {
+  position: absolute;
+  left: 0.5em;
+  top: 101.78em;
+  width: 363.805em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24em;
+}
+
+.pv-settle__coin {
+  position: relative;
+  width: 96em;
+  height: 96em;
+  flex-shrink: 0;
+  overflow: hidden;
+  border-radius: 999em;
+}
+
+.pv-settle__coin-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* 기호 6개(52) + 간격 5개(20) = 412. Figma: 가로 가운데 +0.28, 세로 가운데 +108.26 */
+.pv-settle__strip {
+  position: absolute;
+  left: calc(50% + 0.28em - 26em);
+  top: calc(50% + 108.26em - 206em);
+  display: flex;
+  flex-direction: column;
+  gap: 20em;
+  animation: pv-settle-strip 5s infinite;
+}
+
+.pv-settle__strip img {
+  display: block;
+  width: 52em;
+  height: 52em;
+}
+
+/* Figma 키프레임: 정지 → 이동(cubic-bezier .03,.4,.1,1) 3번, 한 칸 = 72px */
+@keyframes pv-settle-strip {
+  0%,
+  24% {
+    transform: translateY(0);
+    animation-timing-function: cubic-bezier(0.03, 0.4, 0.1, 1);
+  }
+  33%,
+  57% {
+    transform: translateY(-72em);
+    animation-timing-function: cubic-bezier(0.03, 0.4, 0.1, 1);
+  }
+  66%,
+  90% {
+    transform: translateY(-144em);
+    animation-timing-function: cubic-bezier(0.03, 0.4, 0.1, 1);
+  }
+  99%,
+  100% {
+    transform: translateY(-216em);
+  }
+}
+
+.pv-settle__pill {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60em;
+  padding: 9em 25em;
+  box-sizing: border-box;
+  border: 1em solid rgba(255, 255, 255, 0.04);
+  border-radius: 16em;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8em);
+  -webkit-backdrop-filter: blur(8em);
+}
+
+.pv-settle__label {
+  font-family: inherit;
+  font-size: 28em;
+  font-weight: 600;
+  line-height: 1.2;
+  color: #fff;
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pv-settle__strip {
+    animation: none;
+  }
+}

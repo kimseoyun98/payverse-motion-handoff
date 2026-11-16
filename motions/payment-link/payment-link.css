@@ -1,0 +1,49 @@
+/* Figma 키프레임 그대로 (6초 반복). 변환 규칙은 _shared/figma-motion.css 의 .fm */
+.pv-link { --spring-a: linear(0, 0.03, 0.1077, 0.2165, 0.342, 0.4728, 0.6001, 0.7175, 0.8208, 0.9077, 0.9776, 1.0307, 1.0684, 1.0925, 1.1051, 1.1084, 1.1047, 1.096, 1.084, 1.0703, 1.0561, 1.0424, 1.0297, 1.0187, 1.0094, 1.0019, 0.9963, 0.9923, 0.9898, 0.9885, 0.9882, 0.9887, 0.9897, 0.991, 0.9925, 0.994, 0.9955, 0.9969, 0.9981, 0.9991, 0.9998, 1.0004, 1.0009, 1.0011, 1.0012, 1.0013, 1.0012, 1.0011, 1.001, 1.0008, 1.0006); }
+.pv-link [data-node-id] { animation-duration: 6s; animation-timing-function: linear; animation-iteration-count: infinite; }
+
+/* ① 버튼 영역 사라짐 */
+.pv-link [data-node-id="7749:30890"] { animation-name: lk-btn-op; }
+@keyframes lk-btn-op { 0% { opacity: 1; } 13.71% { animation-timing-function: cubic-bezier(.2, .7, .2, 1); opacity: 1; } 16.935%, 100% { opacity: 0; } }
+
+/* 물결 2개 */
+.pv-link [data-node-id="7749:31029"], .pv-link [data-node-id="7749:31038"] { --motion-origin-x: 50; --motion-origin-y: 50; }
+.pv-link [data-node-id="7749:31029"] { animation-name: lk-r1-s, lk-r1-op; }
+.pv-link [data-node-id="7749:31038"] { animation-name: lk-r2-s, lk-r2-op; }
+@keyframes lk-r1-s { 0% { --motion-scale-x: .01; --motion-scale-y: .01; } 0.833% { animation-timing-function: ease-out; --motion-scale-x: .01; --motion-scale-y: .01; } 11.667%, 100% { --motion-scale-x: 3; --motion-scale-y: 3; } }
+@keyframes lk-r1-op { 0% { animation-timing-function: cubic-bezier(.5, 0, .5, 1); opacity: 0; } 0.833% { animation-timing-function: ease-out; opacity: .5; } 11.667%, 100% { opacity: 0; } }
+@keyframes lk-r2-s { 0% { --motion-scale-x: .01; --motion-scale-y: .01; } 3.333% { animation-timing-function: ease-out; --motion-scale-x: .01; --motion-scale-y: .01; } 14.167%, 100% { --motion-scale-x: 3; --motion-scale-y: 3; } }
+@keyframes lk-r2-op { 0% { animation-timing-function: cubic-bezier(.5, 0, .5, 1); opacity: 0; } 3.333% { animation-timing-function: ease-out; opacity: .5; } 14.167%, 100% { opacity: 0; } }
+
+/* ② 채팅 화면 올라옴 */
+.pv-link [data-node-id="7749:30895"] { animation-name: lk-chat-y, lk-chat-op; }
+@keyframes lk-chat-y { 0% { --motion-translate-y: 280; } 14.516% { animation-timing-function: cubic-bezier(.22, 1, .36, 1); --motion-translate-y: 280; } 20.968%, 100% { --motion-translate-y: 0; } }
+@keyframes lk-chat-op { 0% { opacity: 0; } 14.516% { animation-timing-function: cubic-bezier(.22, 1, .36, 1); opacity: 0; } 20.968%, 100% { opacity: 1; } }
+.pv-link [data-node-id="7749:30897"], .pv-link [data-node-id="7749:30907"] { animation-name: lk-fadeout; }
+@keyframes lk-fadeout { 0% { opacity: 1; } 51.613% { animation-timing-function: cubic-bezier(.35, 0, .35, 1); opacity: 1; } 56.452%, 100% { opacity: 0; } }
+.pv-link [data-node-id="7749:30908"] { animation-name: lk-bubble-y; }
+@keyframes lk-bubble-y { 0% { --motion-translate-y: 0; } 32.258% { animation-timing-function: cubic-bezier(.2, .7, .2, 1); --motion-translate-y: 0; } 38.387%, 100% { --motion-translate-y: -37; } }
+
+/* ③ 결제 링크 메시지 (눌림) */
+.pv-link [data-node-id="7749:30950"] { --motion-origin-x: 50; --motion-origin-y: 50; animation-name: lk-msg-sx, lk-msg-sy, lk-msg-y, lk-msg-op; }
+@keyframes lk-msg-sx { 0% { --motion-scale-x: 1; } 43.226% { animation-timing-function: ease-in; --motion-scale-x: 1; } 45.484% { animation-timing-function: var(--spring-a); --motion-scale-x: .96; } 48.71%, 100% { --motion-scale-x: 1; } }
+@keyframes lk-msg-sy { 0% { --motion-scale-y: 1; } 43.226% { animation-timing-function: ease-in; --motion-scale-y: 1; } 45.484% { animation-timing-function: var(--spring-a); --motion-scale-y: .96; } 48.71%, 100% { --motion-scale-y: 1; } }
+@keyframes lk-msg-y { 0% { --motion-translate-y: 20; } 33.065% { animation-timing-function: cubic-bezier(.2, .7, .2, 1); --motion-translate-y: 20; } 38.387% { --motion-translate-y: 0; } 51.613% { animation-timing-function: cubic-bezier(.2, .7, .2, 1); --motion-translate-y: 0; } 56.452%, 100% { --motion-translate-y: -10; } }
+@keyframes lk-msg-op { 0% { opacity: 0; } 33.065% { animation-timing-function: cubic-bezier(.35, 0, .35, 1); opacity: 0; } 38.387% { opacity: 1; } 43.226% { animation-timing-function: ease-in; opacity: 1; } 45.484% { animation-timing-function: var(--spring-a); opacity: .92; } 48.71% { opacity: 1; } 50.806% { animation-timing-function: cubic-bezier(.35, 0, .35, 1); opacity: 1; } 56.452%, 100% { opacity: 0; } }
+
+/* ④ 결제창 */
+.pv-link [data-node-id="7749:30967"] { animation-name: lk-pay-y, lk-pay-op; }
+@keyframes lk-pay-y { 0% { --motion-translate-y: 24; } 50.806% { animation-timing-function: cubic-bezier(.22, 1, .36, 1); --motion-translate-y: 24; } 57.258%, 100% { --motion-translate-y: 0; } }
+@keyframes lk-pay-op { 0% { opacity: 0; } 50.806% { animation-timing-function: cubic-bezier(.22, 1, .36, 1); opacity: 0; } 57.258%, 100% { opacity: 1; } }
+.pv-link [data-node-id="7749:31099"] { animation-name: lk-scroll-y, lk-pay-op; }
+@keyframes lk-scroll-y { 0% { --motion-translate-y: 52; } 50.806% { animation-timing-function: cubic-bezier(.22, 1, .36, 1); --motion-translate-y: 52; } 57.258%, 100% { --motion-translate-y: 0; } }
+.pv-link [data-node-id="7749:31100"] { animation-name: lk-list-y; }
+@keyframes lk-list-y { 0%, 3.094% { --motion-translate-y: 100; } 3.333% { --motion-translate-y: 99.959946; } 5% { --motion-translate-y: 97.359467; } 6.667% { --motion-translate-y: 90.414024; } 8.333% { --motion-translate-y: 79.040733; } 10% { --motion-translate-y: 63.912491; } 11.667% { --motion-translate-y: 46.766609; } 13.333% { --motion-translate-y: 30.103973; } 15% { --motion-translate-y: 16.229454; } 16.667% { --motion-translate-y: 6.475922; } 18.333% { --motion-translate-y: 1.1838; } 19.619%, 64.516% { --motion-translate-y: 0; } 65% { --motion-translate-y: -12.59094; } 66.667% { --motion-translate-y: -44.649021; } 68.333% { --motion-translate-y: -58.393562; } 70% { --motion-translate-y: -64.490936; } 71.667% { --motion-translate-y: -67.38839; } 73.333% { --motion-translate-y: -68.663086; } 75% { --motion-translate-y: -69; } 76.667% { --motion-translate-y: -75.430397; } 78.333% { --motion-translate-y: -86.710602; } 80% { --motion-translate-y: -92.477814; } 81.667% { --motion-translate-y: -95.054085; } 83.333% { --motion-translate-y: -95.951515; } 83.871%, 100% { --motion-translate-y: -96; } }
+.pv-link [data-node-id="7749:30975"] { animation-name: lk-cta-y, lk-cta-op; }
+@keyframes lk-cta-y { 0% { --motion-translate-y: 52; } 51.613% { animation-timing-function: cubic-bezier(.22, 1, .36, 1); --motion-translate-y: 52; } 58.387%, 100% { --motion-translate-y: 0; } }
+@keyframes lk-cta-op { 0% { opacity: 0; } 51.613% { animation-timing-function: cubic-bezier(.22, 1, .36, 1); opacity: 0; } 58.387%, 100% { opacity: 1; } }
+
+/* 움직임 줄이기: 장면이 겹치지 않게 결제창이 다 뜬 순간(4.2초)에서 멈춘다 */
+@media (prefers-reduced-motion: reduce) {
+  .pv-link [data-node-id] { animation-play-state: paused !important; animation-delay: -4.2s !important; }
+}

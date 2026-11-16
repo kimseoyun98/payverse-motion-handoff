@@ -1,0 +1,40 @@
+/*
+ * Figma 키프레임 그대로 (8초 반복). 한 칸 = 행 92 + 간격 24 = 116.24px.
+ * 2초마다 한 칸 올라감: 정지 1.7초 → 이동 0.3초 cubic-bezier(.35,0,.35,1).
+ * 행 4종을 3번 반복해 두었으므로 4칸 이동 후 처음으로 돌아가도 끊김이 없다.
+ */
+.pv-slist { --move: cubic-bezier(.35, 0, .35, 1); }
+.pv-slist__stack { animation: sl-stack 8s linear infinite; }
+@keyframes sl-stack {
+  0% { transform: translateY(-54.84481px); }
+  21.25% { animation-timing-function: var(--move); transform: translateY(-54.84481px); }
+  25% { transform: translateY(-171.086212px); }
+  46.25% { animation-timing-function: var(--move); transform: translateY(-171.086212px); }
+  50% { transform: translateY(-287.327606px); }
+  71.25% { animation-timing-function: var(--move); transform: translateY(-287.327606px); }
+  75% { transform: translateY(-403.569px); }
+  96.25% { animation-timing-function: var(--move); transform: translateY(-403.569px); }
+  100% { transform: translateY(-519.810364px); }
+}
+
+/* 기본: 흐린 행 (불투명도 0.6) */
+.pv-slist__row { opacity: .6; transform-origin: 50% 50%; animation: 8s linear infinite; }
+
+/* 가운데 행 강조: 4번째 행 → 5 → 6 → 7 → 8번째 행 (마지막은 다음 반복의 4번째와 같은 모습) */
+.pv-slist__row[data-row='3'] { animation-name: sl-out-0; }
+.pv-slist__row[data-row='4'] { animation-name: sl-focus-1; }
+.pv-slist__row[data-row='5'] { animation-name: sl-focus-2; }
+.pv-slist__row[data-row='6'] { animation-name: sl-focus-3; }
+.pv-slist__row[data-row='7'] { animation-name: sl-in-4; }
+
+@keyframes sl-out-0 { 0% { opacity: 1; scale: 1.2; } 21.25% { animation-timing-function: var(--move); opacity: 1; scale: 1.2; } 25%, 100% { opacity: .6; scale: 1; } }
+@keyframes sl-focus-1 { 0% { opacity: .6; scale: 1; } 21.25% { animation-timing-function: var(--move); opacity: .6; scale: 1; } 25% { opacity: 1; scale: 1.2; } 46.25% { animation-timing-function: var(--move); opacity: 1; scale: 1.2; } 50%, 100% { opacity: .6; scale: 1; } }
+@keyframes sl-focus-2 { 0% { opacity: .6; scale: 1; } 46.25% { animation-timing-function: var(--move); opacity: .6; scale: 1; } 50% { opacity: 1; scale: 1.2; } 71.25% { animation-timing-function: var(--move); opacity: 1; scale: 1.2; } 75%, 100% { opacity: .6; scale: 1; } }
+@keyframes sl-focus-3 { 0% { opacity: .6; scale: 1; } 71.25% { animation-timing-function: var(--move); opacity: .6; scale: 1; } 75% { opacity: 1; scale: 1.2; } 96.25% { animation-timing-function: var(--move); opacity: 1; scale: 1.2; } 100% { opacity: .6; scale: 1; } }
+@keyframes sl-in-4 { 0% { opacity: .6; scale: 1; } 96.25% { animation-timing-function: var(--move); opacity: .6; scale: 1; } 100% { opacity: 1; scale: 1.2; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .pv-slist__stack, .pv-slist__row { animation: none; }
+  .pv-slist__stack { transform: translateY(-54.84481px); }
+  .pv-slist__row[data-row='3'] { opacity: 1; scale: 1.2; }
+}
