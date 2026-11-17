@@ -83,9 +83,9 @@ import SettlementList from '@/motions/settlement-list/SettlementList';
 | 컴포넌트 · prop | KO | EN | JA |
 |---|---|---|---|
 | FlagDrop `label` | 결제 금액 | Amount | お支払い金額 |
-| SettlementList `labels.settling` | 정산 중 | Processing Settlement | 精算処理中 |
+| SettlementList `labels.settling` | 정산 중 | Processing | 精算処理中 |
 | SettlementList `labels.paidOut` | 지급완료 | Paid out | お支払い完了 |
-| SettlementList `labels.settled` | 정산완료 | Settlement Completed | 精算完了 |
+| SettlementList `labels.settled` | 정산완료 | Settled | 精算完了 |
 | ConnectConfetti `label` | 연동하기 | Integrate with PayVerse | 連携する |
 | PaymentSubscription `days` | 월, 화, 수 | Mon, Tue, Wed | 月, 火, 水 |
 | PaymentLink `sendLink` | 링크 발송 | Send link | リンクを送信 |

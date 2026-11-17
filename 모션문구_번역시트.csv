@@ -1,8 +1,8 @@
 ﻿번호,태그필드,한국어,영어,일본어,비고
 1,모션 asset,결제 금액,Amount,お支払い金額,
-2,모션 asset,정산 중,Processing Settlement,精算処理中,
+2,모션 asset,정산 중,Processing,精算処理中,
 3,모션 asset,지급완료,Paid out,お支払い完了,
-4,모션 asset,정산완료,Settlement Completed,精算完了,
+4,모션 asset,정산완료,Settled,精算完了,
 5,모션 asset,연동하기,Integrate with PayVerse,連携する,
 6,모션 asset,월,Mon,月,
 7,모션 asset,화,Tue,火,
