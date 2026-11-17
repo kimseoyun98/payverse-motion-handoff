@@ -57,22 +57,22 @@ import SettlementList from '@/motions/settlement-list/SettlementList';
 
 ## 문구 목록 (i18n에 추가할 값)
 
-> ⚠️ 영어·일본어는 **임시 번역**입니다. 확정 문구로 바꿔서 넣어 주세요.
+> 영어·일본어는 컨플 번역시트에서 유관부서 확인을 마친 확정 문구입니다 (2026.11.17).
 
-| 컴포넌트 · prop | KO | EN (임시) | JA (임시) |
+| 컴포넌트 · prop | KO | EN | JA |
 |---|---|---|---|
 | FlagDrop `label` | 결제 금액 | Amount | お支払い金額 |
-| SettlementList `labels.settling` | 정산 중 | Settling | 精算中 |
-| SettlementList `labels.paidOut` | 지급완료 | Paid out | 支払完了 |
+| SettlementList `labels.settling` | 정산 중 | Settling | 精算処理中 |
+| SettlementList `labels.paidOut` | 지급완료 | Paid out | お支払い完了 |
 | SettlementList `labels.settled` | 정산완료 | Settled | 精算完了 |
 | ConnectConfetti `label` | 연동하기 | Connect | 連携する |
 | PaymentSubscription `days` | 월, 화, 수 | Mon, Tue, Wed | 月, 火, 水 |
-| PaymentLink `sendLink` | 링크 발송 | Send link | リンク送信 |
-| PaymentLink `payLink` | 페이버스 결제 바로가기 | Pay with PayVerse | PayVerseで支払う |
-| PaymentLink `pay` | 결제하기 | Pay | 支払う |
-| SettlementCurrency `label` | 최종 정산 금액 | Final settlement | 最終精算金額 |
+| PaymentLink `sendLink` | 링크 발송 | Send link | リンクを送信 |
+| PaymentLink `payLink` | 페이버스 결제 바로가기 | Pay with PayVerse | PayVerseでお支払い |
+| PaymentLink `pay` | 결제하기 | Pay | お支払いへ進む |
+| SettlementCurrency `label` | 최종 정산 금액 | Final settlement | ご請求金額 |
 | ApiPluginInstall `label` | 설치하기 | Install | インストール |
-| CardSwap 카드 `title` / `pay` | 카드정보 / 10,000원 결제 | Card Info / Pay $7.65 | カード情報 / ¥1,100 支払う |
+| CardSwap 카드 `title` / `pay` | 카드정보 / 10,000원 결제 | Card Info / Pay $7.65 | カード情報 / ¥1,100 を支払う |
 
 ### 언어별로 넘기는 방식이 다른 것
 - **CardMultilangPay**: 문구가 아니라 시작 언어만 넘깁니다. 현재 언어 버튼부터 보이기 시작합니다 (EN이면 ENGLISH부터).

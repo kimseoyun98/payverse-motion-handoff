@@ -1,4 +1,4 @@
-import type { CSSProperties } from 'react';
+import { useLayoutEffect, useRef, type CSSProperties } from 'react';
 import MotionStage from '../_shared/MotionStage';
 import './flag-drop.css';
 import us from './assets/us.svg';
@@ -12,6 +12,7 @@ import phone from './assets/phone.svg';
  * 국기 동전이 한 칸씩 휴대폰 안으로 떨어지며 회전하고, 휴대폰 화면의 결제 금액이 통화별로 바뀐다.
  * 뒤에는 같은 국기들을 크게 흐리게 깐 배경이 함께 내려온다.
  * "결제 금액" 문구만 i18n 값으로 넘긴다. 금액·통화 기호는 언어 공통.
+ * 문구는 왼쪽 정렬(x 96)이고, 가장 긴 금액(₩10,000)과 40px 이상 띄우도록 폭 180px을 넘으면 글씨를 줄인다.
  */
 const FLAG = { us, kr, jp, cn } as const;
 type Flag = keyof typeof FLAG;
@@ -44,7 +45,28 @@ const AMOUNTS = [['$', '6.81'], ['¥', '11.28'], ['¥', '46.67'], ['₩', '10,00
 
 const v = (o: Record<string, string>) => o as CSSProperties;
 
+const LABEL_MAX = 180; // 96(문구 시작) + 180 + 40(여백) ≈ ₩10,000 시작점(315)
+const LABEL_SIZE = 38;
+
+// 문구가 LABEL_MAX보다 길면 글씨 크기를 비율대로 줄인다 (짧으면 38px 그대로).
+function useFitLabel(label: string) {
+  const ref = useRef<HTMLParagraphElement>(null);
+  useLayoutEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const fit = () => {
+      el.style.fontSize = `${LABEL_SIZE}px`;
+      const w = el.scrollWidth;
+      if (w > LABEL_MAX) el.style.fontSize = `${Math.floor((LABEL_SIZE * LABEL_MAX) / w * 10) / 10}px`;
+    };
+    fit();
+    document.fonts?.ready.then(fit);
+  }, [label]);
+  return ref;
+}
+
 export default function FlagDrop({ label = '결제 금액', className }: { label?: string; className?: string }) {
+  const labelRef = useFitLabel(label);
   return (
     <MotionStage width={620} height={680} className={className}>
       <div className="pv-flag relative h-[680px] w-[620px] overflow-clip border border-solid border-[var(--seed-color-stroke-neutral-muted,rgba(0,0,0,0.06))] bg-[var(--seed-color-bg-layer-fill,#f7f8f9)]">
@@ -86,7 +108,7 @@ export default function FlagDrop({ label = '결제 금액', className }: { label
             </p>
           </div>
         ))}
-        <p className="absolute left-[163px] top-[589px] -translate-x-1/2 whitespace-nowrap text-[38px] font-semibold leading-none tracking-[-0.76px] text-[var(--seed-color-fg-neutral-muted,#555d6d)]">
+        <p ref={labelRef} className="absolute left-[96px] top-[608px] -translate-y-1/2 whitespace-nowrap text-[38px] font-semibold leading-none tracking-[-0.76px] text-[var(--seed-color-fg-neutral-muted,#555d6d)]">
           {label}
         </p>
       </div>
