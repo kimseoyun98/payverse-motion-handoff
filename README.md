@@ -83,10 +83,10 @@ import SettlementList from '@/motions/settlement-list/SettlementList';
 | 컴포넌트 · prop | KO | EN | JA |
 |---|---|---|---|
 | FlagDrop `label` | 결제 금액 | Amount | お支払い金額 |
-| SettlementList `labels.settling` | 정산 중 | Settling | 精算処理中 |
+| SettlementList `labels.settling` | 정산 중 | Processing Settlement | 精算処理中 |
 | SettlementList `labels.paidOut` | 지급완료 | Paid out | お支払い完了 |
-| SettlementList `labels.settled` | 정산완료 | Settled | 精算完了 |
-| ConnectConfetti `label` | 연동하기 | Connect | 連携する |
+| SettlementList `labels.settled` | 정산완료 | Settlement Completed | 精算完了 |
+| ConnectConfetti `label` | 연동하기 | Integrate with PayVerse | 連携する |
 | PaymentSubscription `days` | 월, 화, 수 | Mon, Tue, Wed | 月, 火, 水 |
 | PaymentLink `sendLink` | 링크 발송 | Send link | リンクを送信 |
 | PaymentLink `payLink` | 페이버스 결제 바로가기 | Pay with PayVerse | PayVerseでお支払い |
@@ -103,6 +103,8 @@ import SettlementList from '@/motions/settlement-list/SettlementList';
   - JA: `top` = 일본어 카드, `bottom` = 영어 카드
 
 ## 참고 사항
+
+- `SettlementList`(정산 목록)은 문구가 긴 언어(영어)에서 1.2배로 커진 가운데 행이 모션 영역보다 넓어질 수 있어, 좌우는 자르지 않고 넘기게 해두었습니다. 감싸는 카드에 `overflow: hidden`을 주면 카드 끝에서 잘립니다 (카드 안쪽 여백 25px 기준으로는 잘리지 않고 다 들어옵니다).
 
 - **api-section-1**: 코드 화면이 SVG 그림이라 언어를 바꿔도 그대로입니다.
 - **api-section-2**: "설치하기" 버튼이 나왔다가 눌리고 사라진 뒤 로고가 나오는 연출은 Figma에 없고 코드에만 추가했습니다. 기존 영상의 ↓ 아이콘은 지금 Figma에 없어 빠졌습니다.

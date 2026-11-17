@@ -1,6 +1,7 @@
-import { useLayoutEffect, useRef, type CSSProperties } from 'react';
+import type { CSSProperties } from 'react';
 import MotionStage from '../_shared/MotionStage';
 import type { PlaybackProps } from '../_shared/playback';
+import { useFitText } from '../_shared/fit-text';
 import './flag-drop.css';
 import us from './assets/us.svg';
 import kr from './assets/kr.svg';
@@ -49,25 +50,9 @@ const v = (o: Record<string, string>) => o as CSSProperties;
 const LABEL_MAX = 180; // 96(문구 시작) + 180 + 40(여백) ≈ ₩10,000 시작점(315)
 const LABEL_SIZE = 38;
 
-// 문구가 LABEL_MAX보다 길면 글씨 크기를 비율대로 줄인다 (짧으면 38px 그대로).
-function useFitLabel(label: string) {
-  const ref = useRef<HTMLParagraphElement>(null);
-  useLayoutEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const fit = () => {
-      el.style.fontSize = `${LABEL_SIZE}px`;
-      const w = el.scrollWidth;
-      if (w > LABEL_MAX) el.style.fontSize = `${Math.floor((LABEL_SIZE * LABEL_MAX) / w * 10) / 10}px`;
-    };
-    fit();
-    document.fonts?.ready.then(fit);
-  }, [label]);
-  return ref;
-}
 
 export default function FlagDrop({ label = '결제 금액', className, loop = false, play }: { label?: string; className?: string } & PlaybackProps) {
-  const labelRef = useFitLabel(label);
+  const labelRef = useFitText<HTMLParagraphElement>(label, LABEL_SIZE, LABEL_MAX);
   return (
     <MotionStage width={620} height={680} className={className} loop={loop} play={play}>
       <div className="pv-flag relative h-[680px] w-[620px] overflow-clip border border-solid border-[var(--seed-color-stroke-neutral-muted,rgba(0,0,0,0.06))] bg-[var(--seed-color-bg-layer-fill,#f7f8f9)]">

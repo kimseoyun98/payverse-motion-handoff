@@ -1,9 +1,9 @@
 ﻿번호,태그필드,한국어,영어,일본어,비고
 1,모션 asset,결제 금액,Amount,お支払い金額,
-2,모션 asset,정산 중,Settling,精算処理中,
+2,모션 asset,정산 중,Processing Settlement,精算処理中,
 3,모션 asset,지급완료,Paid out,お支払い完了,
-4,모션 asset,정산완료,Settled,精算完了,
-5,모션 asset,연동하기,Connect,連携する,
+4,모션 asset,정산완료,Settlement Completed,精算完了,
+5,모션 asset,연동하기,Integrate with PayVerse,連携する,
 6,모션 asset,월,Mon,月,
 7,모션 asset,화,Tue,火,
 8,모션 asset,수,Wed,水,
@@ -13,4 +13,4 @@
 12,모션 asset,최종 정산 금액,Final settlement,ご請求金額,
 13,모션 asset,설치하기,Install,インストール,
 14,모션 asset,카드정보,Card Info,カード情報,
-15,모션 asset,"10,000원 결제",Pay $7.65,"¥1,100 を支払う",
+15,모션 asset,"10,000원 결제",Pay $7.65,"¥1,100 を支払う","10,000원 환산 금액 확인 필요"

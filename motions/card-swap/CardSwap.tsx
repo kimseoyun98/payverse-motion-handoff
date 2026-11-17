@@ -28,7 +28,7 @@ function Card({ text, nodeId, pos, overlay = false }: { text: CardText; nodeId: 
   const place = pos === 'top' ? 'left-[calc(50%-63.5px)] top-[calc(50%-90.7px)]' : 'left-[calc(50%+62.5px)] top-[calc(50%+91.3px)]';
   return (
     <div data-node-id={nodeId} className={`fm absolute ${place} flex w-[200px] flex-col items-start overflow-clip rounded-[14px] border border-solid border-[rgba(0,0,0,0.05)] bg-white ${overlay ? 'opacity-0' : ''}`} style={L}>
-      <div className="relative flex h-[106px] w-full shrink-0 flex-col items-start">
+      <div className="relative flex h-[106px] w-full shrink-0 flex-col items-start overflow-clip">
         <div className="flex w-full flex-col items-start gap-[12px] bg-gradient-to-b from-[rgba(247,248,249,0)] to-[#f7f8f9] p-[16px]">
           <p className="h-[12px] text-[11px] font-medium leading-[12px] whitespace-nowrap text-[#555d6d]">{text.title}</p>
           <div className="flex w-full flex-col gap-[4px]">

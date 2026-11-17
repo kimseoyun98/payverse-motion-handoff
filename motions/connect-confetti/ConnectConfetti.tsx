@@ -1,6 +1,7 @@
 import type { CSSProperties } from 'react';
 import MotionStage from '../_shared/MotionStage';
 import type { PlaybackProps } from '../_shared/playback';
+import { useFitText } from '../_shared/fit-text';
 import './connect-confetti.css';
 import symbol from './assets/symbol.svg';
 
@@ -79,6 +80,8 @@ function Confetti({ piece: [id, kind, color, x, y, w, h] }: { piece: Piece }) {
 }
 
 export default function ConnectConfetti({ label = '연동하기', className, loop = false, play }: { label?: string; className?: string } & PlaybackProps) {
+  // 버튼 폭 449px, 양 끝 둥근 부분(반지름 66)을 피해 문구는 최대 320px. 넘으면 글씨를 줄인다.
+  const labelRef = useFitText<HTMLParagraphElement>(label, 40, 320);
   return (
     <MotionStage width={620} height={680} className={className} loop={loop} play={play}>
       <div className="pv-sb5 relative h-[680px] w-[620px] overflow-clip border border-solid border-[var(--seed-color-stroke-neutral-subtle,rgba(0,0,0,0.05))] bg-[var(--seed-color-bg-layer-fill,#f7f8f9)]">
@@ -97,7 +100,7 @@ export default function ConnectConfetti({ label = '연동하기', className, loo
             {['7744:36806', '7744:36823', '7744:36840'].map((id) => (
               <div key={id} data-node-id={id} className="absolute left-[164px] top-[6.2px] size-[120px] rounded-full bg-white/30" />
             ))}
-            <p data-node-id="7721:38466" className="absolute left-[calc(50%-1.61px)] top-[calc(50%+0.33px)] -translate-x-1/2 -translate-y-1/2 whitespace-nowrap text-[40px] font-bold leading-none tracking-[-0.8px] text-white">
+            <p ref={labelRef} data-node-id="7721:38466" className="absolute left-[calc(50%-1.61px)] top-[calc(50%+0.33px)] -translate-x-1/2 -translate-y-1/2 whitespace-nowrap text-[40px] font-bold leading-none tracking-[-0.8px] text-white">
               {label}
             </p>
             <div data-node-id="7744:36867" className="absolute left-[206px] top-[54px] h-[24px] w-[37px]">

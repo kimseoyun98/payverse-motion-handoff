@@ -5,7 +5,9 @@ import { usePlayback, type PlaybackProps } from './playback';
  * Figma 디자인 크기(px) 그대로 만든 모션을 부모 폭에 맞춰 비율 그대로 늘리고 줄인다.
  * 안쪽은 항상 디자인 크기로 그려지고 scale만 바뀌므로, Figma px 값을 손대지 않아도 된다.
  */
-export default function MotionStage({ width, height, className, label, loop = true, play, children }: PlaybackProps & {
+export default function MotionStage({ width, height, className, label, loop = true, play, bleedX = false, children }: PlaybackProps & {
+  /** true면 좌우로 넘치는 부분을 자르지 않는다 (감싸는 카드 끝에서 잘리도록). 위아래는 그대로 자름 */
+  bleedX?: boolean;
   width: number;
   height: number;
   className?: string;
@@ -30,7 +32,7 @@ export default function MotionStage({ width, height, className, label, loop = tr
       ref={outer}
       className={className}
       data-motion-once={loop ? undefined : ''}
-      style={{ position: 'relative', width: '100%', aspectRatio: `${width} / ${height}`, overflow: 'hidden' }}
+      style={{ position: 'relative', width: '100%', aspectRatio: `${width} / ${height}`, overflow: bleedX ? 'visible clip' : 'hidden' }}
       {...(label ? { role: 'img', 'aria-label': label } : { 'aria-hidden': true })}
     >
       <div ref={inner} style={{ position: 'absolute', left: 0, top: 0, width, height, transformOrigin: '0 0' }}>
