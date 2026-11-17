@@ -1,5 +1,6 @@
 import type { CSSProperties, ReactNode } from 'react';
 import MotionStage from '../_shared/MotionStage';
+import type { PlaybackProps } from '../_shared/playback';
 import '../_shared/figma-motion.css';
 import './payment-link.css';
 import gpay from './assets/gpay.png';
@@ -42,9 +43,9 @@ function Img({ src, box, fit = 'block size-full' }: { src: string; box: string; 
 }
 const Row = ({ children }: { children: ReactNode }) => <div className="flex gap-[10px] items-start relative shrink-0 w-full">{children}</div>;
 
-export default function PaymentLink({ sendLink = '링크 발송', payLink = '페이버스 결제 바로가기', pay = '결제하기', className }: Props) {
+export default function PaymentLink({ sendLink = '링크 발송', payLink = '페이버스 결제 바로가기', pay = '결제하기', className, loop = false, play }: Props & PlaybackProps) {
   return (
-    <MotionStage width={322} height={322} className={className}>
+    <MotionStage width={322} height={322} className={className} loop={loop} play={play}>
       <div className="pv-link relative size-[322px] overflow-clip rounded-[16px] bg-[var(--seed-color-bg-brand-weak,#e2edfc)]">
         {/* ① 링크 발송 버튼 */}
         <div data-node-id="7749:30890" className="absolute left-0 top-0 size-[322px]">

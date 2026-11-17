@@ -1,5 +1,6 @@
 import type { CSSProperties } from 'react';
 import MotionStage from '../_shared/MotionStage';
+import type { PlaybackProps } from '../_shared/playback';
 import './payment-logo-marquee.css';
 import sprite from './assets/logo-sprite.svg';
 
@@ -27,9 +28,9 @@ function Tile({ index }: { index: number }) {
   );
 }
 
-export default function PaymentLogoMarquee({ className }: { className?: string }) {
+export default function PaymentLogoMarquee({ className, loop = true, play }: { className?: string } & PlaybackProps) {
   return (
-    <MotionStage width={435} height={435} className={className}>
+    <MotionStage width={435} height={435} className={className} loop={loop} play={play}>
       <div className="pv-marquee relative size-[435px] overflow-clip rounded-[24px] bg-[var(--seed-color-bg-brand-solid,#217cf9)]">
         {ROWS.map((r, ri) => (
           <div key={ri} className={`pv-marquee__track pv-marquee__track--${r.dir} absolute left-0 flex gap-[8px]`} style={{ top: r.top }}>

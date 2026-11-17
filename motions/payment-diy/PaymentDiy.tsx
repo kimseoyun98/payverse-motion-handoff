@@ -1,5 +1,6 @@
 import type { CSSProperties } from 'react';
 import MotionStage from '../_shared/MotionStage';
+import type { PlaybackProps } from '../_shared/playback';
 import '../_shared/figma-motion.css';
 import './payment-diy.css';
 import paypal from './assets/paypal.svg';
@@ -46,9 +47,9 @@ function Logo({ src, w, h, fit = 'object-cover' }: { src: string; w: string; h: 
   );
 }
 
-export default function PaymentDiy({ className }: { className?: string }) {
+export default function PaymentDiy({ className, loop = false, play }: { className?: string } & PlaybackProps) {
   return (
-    <MotionStage width={322} height={322} className={className}>
+    <MotionStage width={322} height={322} className={className} loop={loop} play={play}>
       <div className="pv-diy relative size-[322px] overflow-clip rounded-[16px] bg-[var(--seed-color-bg-brand-weak,#e2edfc)]">
         <div className="-translate-x-1/2 -translate-y-1/2 absolute content-center flex flex-wrap gap-[8px] items-center justify-center left-1/2 top-1/2 w-[298px]">
           <div className={tile}>

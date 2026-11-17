@@ -1,5 +1,6 @@
 import type { CSSProperties } from 'react';
 import MotionStage from '../_shared/MotionStage';
+import type { PlaybackProps } from '../_shared/playback';
 import '../_shared/figma-motion.css';
 import './api-code-pay.css';
 import logo from './assets/logo.svg';
@@ -16,9 +17,9 @@ import payButton from './assets/pay-button.svg';
  */
 const L = { '--motion-layout-transform': 'translate(0px)' } as CSSProperties;
 
-export default function ApiCodePay({ className }: { className?: string }) {
+export default function ApiCodePay({ className, loop = false, play }: { className?: string } & PlaybackProps) {
   return (
-    <MotionStage width={472} height={472} className={className}>
+    <MotionStage width={472} height={472} className={className} loop={loop} play={play}>
       <div className="pv-api1 relative size-[472px]">
         <div className="absolute inset-0 overflow-clip rounded-[24px] border border-solid border-[rgba(0,0,0,0.05)] bg-[var(--seed-color-bg-neutral-solid,#1a1c20)]">
           {/* 연동 코드 (그림) */}

@@ -1,5 +1,6 @@
 import type { CSSProperties } from 'react';
 import MotionStage from '../_shared/MotionStage';
+import type { PlaybackProps } from '../_shared/playback';
 import '../_shared/figma-motion.css';
 import './card-multilang-pay.css';
 import payverseLogo from './assets/payverse-logo.png';
@@ -68,10 +69,10 @@ function PayButton({ text, solid, textNodeId }: { text: string; solid: boolean; 
   );
 }
 
-export default function CardMultilangPay({ start = 'ko', className }: { start?: Lang; className?: string }) {
+export default function CardMultilangPay({ start = 'ko', className, loop = false, play }: { start?: Lang; className?: string } & PlaybackProps) {
   const [ko, ...rest] = SCENES;
   return (
-    <MotionStage width={620} height={680} className={className}>
+    <MotionStage width={620} height={680} className={className} loop={loop} play={play}>
       <div className="pv-mlp relative size-[620px] h-[680px] border border-solid border-[rgba(0,0,0,0.06)] bg-[var(--seed-color-bg-layer-fill,#f7f8f9)]" style={{ '--pv-mlp-delay': START_DELAY[start] } as CSSProperties}>
         {/* 기본 장면: 한국어 (휴대폰·파란 버튼은 이 장면 것이 계속 깔려 있음) */}
         <div className="absolute inset-0 flex flex-col items-start">

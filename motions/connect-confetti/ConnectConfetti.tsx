@@ -1,5 +1,6 @@
 import type { CSSProperties } from 'react';
 import MotionStage from '../_shared/MotionStage';
+import type { PlaybackProps } from '../_shared/playback';
 import './connect-confetti.css';
 import symbol from './assets/symbol.svg';
 
@@ -77,9 +78,9 @@ function Confetti({ piece: [id, kind, color, x, y, w, h] }: { piece: Piece }) {
   );
 }
 
-export default function ConnectConfetti({ label = '연동하기', className }: { label?: string; className?: string }) {
+export default function ConnectConfetti({ label = '연동하기', className, loop = false, play }: { label?: string; className?: string } & PlaybackProps) {
   return (
-    <MotionStage width={620} height={680} className={className}>
+    <MotionStage width={620} height={680} className={className} loop={loop} play={play}>
       <div className="pv-sb5 relative h-[680px] w-[620px] overflow-clip border border-solid border-[var(--seed-color-stroke-neutral-subtle,rgba(0,0,0,0.05))] bg-[var(--seed-color-bg-layer-fill,#f7f8f9)]">
         <div className="absolute left-[calc(50%-0.5px)] top-[calc(50%+19.8px)] flex w-[449px] -translate-x-1/2 -translate-y-1/2 flex-col items-start gap-[32px]">
           {/* 페이버스 심볼 (위에서 내려옴, 버튼 눌릴 때 살짝 커짐) */}

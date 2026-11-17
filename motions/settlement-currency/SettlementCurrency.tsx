@@ -1,3 +1,5 @@
+import { useRef } from 'react';
+import { usePlayback, type PlaybackProps } from '../_shared/playback';
 import './settlement-currency.css';
 import arc from './assets/arc.svg';
 import coinYen from './assets/coin-yen.svg';
@@ -38,9 +40,11 @@ type Props = {
   className?: string;
 };
 
-export default function SettlementCurrency({ label = '최종 정산 금액', className }: Props) {
+export default function SettlementCurrency({ label = '최종 정산 금액', className, loop = true, play }: Props & PlaybackProps) {
+  const root = useRef<HTMLDivElement>(null);
+  usePlayback(root, loop, play);
   return (
-    <div className={['pv-settle', className].filter(Boolean).join(' ')} role="img" aria-label={label}>
+    <div ref={root} className={['pv-settle', className].filter(Boolean).join(' ')} data-motion-once={loop ? undefined : ''} role="img" aria-label={label}>
       <div className="pv-settle__card">
         <div className="pv-settle__stage">
           {/* 점선 반원: Figma "Outer circle border" 레이어를 SVG로 그대로 내보낸 고정 에셋 */}

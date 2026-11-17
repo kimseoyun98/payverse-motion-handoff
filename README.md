@@ -28,21 +28,21 @@
 
 ## 영상 → 컴포넌트 대응표
 
-| 기존 영상 | 위치 | 컴포넌트 | 넘길 값 |
-|---|---|---|---|
-| `card-section-sb2.mp4` | 홈 카드 · 다국어 결제 버튼 | `card-multilang-pay/CardMultilangPay` | `start` = 현재 언어 (`'ko' \| 'en' \| 'ja'`) |
-| `card-section-sb3.mp4` | 홈 카드 · 국기 낙하 | `flag-drop/FlagDrop` | `label` |
-| `card-section-sb4.mp4` | 홈 카드 · 정산 목록 | `settlement-list/SettlementList` | `labels` = `{ settling, paidOut, settled }` |
-| `card-section-sb5.mp4` | 홈 카드 · 연동 완료 | `connect-confetti/ConnectConfetti` | `label` |
-| `payment-qr.mp4` | 홈 부가서비스 · QR결제 | `payment-qr/PaymentQr` | 없음 (글자 없음) |
-| `payment-diy-checkout.mp4` | 홈 부가서비스 · DIY 결제창 | `payment-diy/PaymentDiy` | 없음 |
-| `payment-subscription.mp4` | 홈 부가서비스 · 정기결제 | `payment-subscription/PaymentSubscription` | `days` = 요일 3개 배열 |
-| `payment-link.mp4` | 홈 부가서비스 · 링크결제 | `payment-link/PaymentLink` | `sendLink`, `payLink`, `pay` |
-| `feature-section-1.mp4` | PG Feature · 결제사 로고 | `payment-logo-marquee/PaymentLogoMarquee` | 없음 |
-| `feature-section-2.mp4` | PG Feature · 카드 UI | `card-swap/CardSwap` | `top`, `bottom` = `{ title, pay }` (아래 참고) |
-| `feature-section-3.mp4` | PG Feature · 통화 아이콘 | `settlement-currency/SettlementCurrency` | `label` |
-| `api-section-1.mp4` | PG API · 코드 + 결제창 | `api-code-pay/ApiCodePay` | 없음 (아래 참고) |
-| `api-section-2.mp4` | PG API · 플러그인 설치 | `api-plugin-install/ApiPluginInstall` | `label` |
+| 기존 영상 | 위치 | 컴포넌트 | 넘길 값 | 재생 (기본값) |
+|---|---|---|---|---|
+| `card-section-sb2.mp4` | 홈 카드 · 다국어 결제 버튼 | `card-multilang-pay/CardMultilangPay` | `start` = 현재 언어 (`'ko' \| 'en' \| 'ja'`) | 한 번 |
+| `card-section-sb3.mp4` | 홈 카드 · 국기 낙하 | `flag-drop/FlagDrop` | `label` | 한 번 |
+| `card-section-sb4.mp4` | 홈 카드 · 정산 목록 | `settlement-list/SettlementList` | `labels` = `{ settling, paidOut, settled }` | 한 번 |
+| `card-section-sb5.mp4` | 홈 카드 · 연동 완료 | `connect-confetti/ConnectConfetti` | `label` | 한 번 |
+| `payment-qr.mp4` | 홈 부가서비스 · QR결제 | `payment-qr/PaymentQr` | 없음 (글자 없음) | 한 번 |
+| `payment-diy-checkout.mp4` | 홈 부가서비스 · DIY 결제창 | `payment-diy/PaymentDiy` | 없음 | 한 번 |
+| `payment-subscription.mp4` | 홈 부가서비스 · 정기결제 | `payment-subscription/PaymentSubscription` | `days` = 요일 3개 배열 | 한 번 |
+| `payment-link.mp4` | 홈 부가서비스 · 링크결제 | `payment-link/PaymentLink` | `sendLink`, `payLink`, `pay` | 한 번 |
+| `feature-section-1.mp4` | PG Feature · 결제사 로고 | `payment-logo-marquee/PaymentLogoMarquee` | 없음 | 반복 |
+| `feature-section-2.mp4` | PG Feature · 카드 UI | `card-swap/CardSwap` | `top`, `bottom` = `{ title, pay }` (아래 참고) | 반복 |
+| `feature-section-3.mp4` | PG Feature · 통화 아이콘 | `settlement-currency/SettlementCurrency` | `label` | 반복 |
+| `api-section-1.mp4` | PG API · 코드 + 결제창 | `api-code-pay/ApiCodePay` | 없음 (아래 참고) | 한 번 |
+| `api-section-2.mp4` | PG API · 플러그인 설치 | `api-plugin-install/ApiPluginInstall` | `label` | 한 번 |
 
 ### 사용 예
 
@@ -54,6 +54,27 @@ import SettlementList from '@/motions/settlement-list/SettlementList';
 <SettlementList labels={{ settling: t('...'), paidOut: t('...'), settled: t('...') }} />
 <CardMultilangPay start={i18n.language as 'ko' | 'en' | 'ja'} />
 ```
+
+## 재생 방식 (한 번 / 반복)
+
+기존 영상과 똑같이 동작하도록 컴포넌트마다 기본값을 맞춰 두었습니다 (위 표 "재생" 열). 따로 넘기지 않아도 됩니다.
+
+- **한 번**: 처음부터 한 번 재생하고 마지막 장면에서 멈춥니다. 다시 재생 신호가 오면 처음부터 다시 재생합니다.
+- **반복**: 끊김 없이 무한 반복합니다.
+
+| prop | 설명 |
+|---|---|
+| `loop` | `true` 반복 / `false` 한 번. 기본값을 바꾸고 싶을 때만 넘깁니다. |
+| `play` | 한 번 재생 모드에서만 씁니다. `true`가 될 때마다 처음부터 재생, `false`면 첫 장면에서 대기합니다. 기존 영상에 `video.play()`를 하던 시점(예: 홈 카드가 앞으로 올라올 때)에 `true`로 넘기면 됩니다. |
+
+`play`를 넘기지 않으면 컴포넌트가 화면에 50% 이상 보일 때 처음부터 재생하고, 화면을 벗어나면 첫 장면으로 돌아갑니다.
+
+```tsx
+// 홈 카드: 기존에 영상을 재생하던 조건을 그대로 play로
+<FlagDrop label={t('motion.amount')} play={activeCard === 'sb3'} />
+```
+
+움직임 줄이기 설정(prefers-reduced-motion)에서는 재생하지 않고 정지 장면만 보여줍니다.
 
 ## 문구 목록 (i18n에 추가할 값)
 

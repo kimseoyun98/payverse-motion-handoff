@@ -1,5 +1,6 @@
 import { useLayoutEffect, useRef, type CSSProperties } from 'react';
 import MotionStage from '../_shared/MotionStage';
+import type { PlaybackProps } from '../_shared/playback';
 import './flag-drop.css';
 import us from './assets/us.svg';
 import kr from './assets/kr.svg';
@@ -65,10 +66,10 @@ function useFitLabel(label: string) {
   return ref;
 }
 
-export default function FlagDrop({ label = '결제 금액', className }: { label?: string; className?: string }) {
+export default function FlagDrop({ label = '결제 금액', className, loop = false, play }: { label?: string; className?: string } & PlaybackProps) {
   const labelRef = useFitLabel(label);
   return (
-    <MotionStage width={620} height={680} className={className}>
+    <MotionStage width={620} height={680} className={className} loop={loop} play={play}>
       <div className="pv-flag relative h-[680px] w-[620px] overflow-clip border border-solid border-[var(--seed-color-stroke-neutral-muted,rgba(0,0,0,0.06))] bg-[var(--seed-color-bg-layer-fill,#f7f8f9)]">
         {/* 흐린 배경 (Figma 레이어 블러 400 = CSS blur 200px). Figma 마스크(7711:27824): 위 40%는 안 보이고 아래로 갈수록 진해짐 */}
         <div className="absolute inset-0 [mask-image:linear-gradient(to_bottom,transparent_272.5px,#000_681px)]">

@@ -1,4 +1,5 @@
 import MotionStage from '../_shared/MotionStage';
+import type { PlaybackProps } from '../_shared/playback';
 import './settlement-list.css';
 import coin1 from './assets/coin-1.svg';
 import coin2 from './assets/coin-2.svg';
@@ -32,9 +33,9 @@ const CHIP: Record<Status, string> = {
   settled: 'bg-[#d7e8ff] text-[#217cf9]',
 };
 
-export default function SettlementList({ labels = KO, className }: { labels?: Labels; className?: string }) {
+export default function SettlementList({ labels = KO, className, loop = false, play }: { labels?: Labels; className?: string } & PlaybackProps) {
   return (
-    <MotionStage width={620} height={680} className={className}>
+    <MotionStage width={620} height={680} className={className} loop={loop} play={play}>
       <div className="pv-slist relative h-[680px] w-[620px] overflow-clip bg-[var(--seed-color-bg-layer-fill,#f7f8f9)]">
         {/* Figma 마스크(7744:30891): 위아래 170px에서 배경으로 흐려짐 */}
         <div className="absolute inset-0 [mask-image:linear-gradient(to_bottom,transparent_0,#000_170px,#000_510px,transparent_680px)]">

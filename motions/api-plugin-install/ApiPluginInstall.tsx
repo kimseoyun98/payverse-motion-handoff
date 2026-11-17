@@ -1,5 +1,6 @@
 import type { CSSProperties } from 'react';
 import MotionStage from '../_shared/MotionStage';
+import type { PlaybackProps } from '../_shared/playback';
 import '../_shared/figma-motion.css';
 import './api-plugin-install.css';
 import iconHome from './assets/icon-home.svg';
@@ -20,9 +21,9 @@ import tail from './assets/tail.svg';
 const L = (v: string) => ({ '--motion-layout-transform': v }) as CSSProperties;
 const slot = 'flex h-[87.159px] w-full shrink-0 items-center justify-center overflow-clip rounded-[17.432px] p-[24px]';
 
-export default function ApiPluginInstall({ label = '설치하기', className }: { label?: string; className?: string }) {
+export default function ApiPluginInstall({ label = '설치하기', className, loop = false, play }: { label?: string; className?: string } & PlaybackProps) {
   return (
-    <MotionStage width={472} height={472} className={className}>
+    <MotionStage width={472} height={472} className={className} loop={loop} play={play}>
       <div className="pv-api2 relative size-[472px]">
         <div className="-translate-y-1/2 absolute left-0 right-0 top-1/2 flex h-[472px] flex-col items-start overflow-clip rounded-[24px] border border-solid border-[rgba(0,0,0,0.05)] bg-[var(--seed-color-bg-neutral-inverted,#2a3038)]">
           {/* 창 위쪽 막대 (신호등 버튼) */}

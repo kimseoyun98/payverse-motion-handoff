@@ -1,5 +1,6 @@
 import type { CSSProperties } from 'react';
 import MotionStage from '../_shared/MotionStage';
+import type { PlaybackProps } from '../_shared/playback';
 import '../_shared/figma-motion.css';
 import './card-swap.css';
 import num1234 from './assets/num-1234.svg';
@@ -53,9 +54,9 @@ function Card({ text, nodeId, pos, overlay = false }: { text: CardText; nodeId: 
   );
 }
 
-export default function CardSwap({ top = KO, bottom = EN, className }: Props) {
+export default function CardSwap({ top = KO, bottom = EN, className, loop = true, play }: Props & PlaybackProps) {
   return (
-    <MotionStage width={435} height={435} className={className}>
+    <MotionStage width={435} height={435} className={className} loop={loop} play={play}>
       <div className="pv-swap relative size-[435px] overflow-clip rounded-[24px] bg-[var(--seed-color-bg-brand-solid,#217cf9)]">
         <Card text={top} nodeId="7835:79996" pos="top" />
         <Card text={bottom} nodeId="7835:80040" pos="bottom" />

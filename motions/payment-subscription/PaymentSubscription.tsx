@@ -1,4 +1,5 @@
 import MotionStage from '../_shared/MotionStage';
+import type { PlaybackProps } from '../_shared/playback';
 import './payment-subscription.css';
 
 /**
@@ -10,9 +11,9 @@ type Props = { days?: [string, string, string]; className?: string };
 
 const STROKE = { strokeWidth: 12, strokeLinecap: 'round' as const, stroke: '#5E98FE', fill: 'none', pathLength: 1 };
 
-export default function PaymentSubscription({ days = ['월', '화', '수'], className }: Props) {
+export default function PaymentSubscription({ days = ['월', '화', '수'], className, loop = false, play }: Props & PlaybackProps) {
   return (
-    <MotionStage width={322} height={322} className={className}>
+    <MotionStage width={322} height={322} className={className} loop={loop} play={play}>
       <div className="pv-sub relative size-[322px] overflow-clip rounded-[16px] bg-[var(--seed-color-bg-brand-weak,#e2edfc)]">
         {/* 날짜 영역 */}
         <div className="-translate-x-1/2 -translate-y-1/2 absolute h-[219px] left-1/2 overflow-clip rounded-[63.231px] text-center top-[calc(50%-28.5px)] w-[364px] font-bold">
